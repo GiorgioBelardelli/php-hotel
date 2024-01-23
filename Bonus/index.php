@@ -7,9 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+
+<h1>HOTELS</h1>
     
     <form>
-        <label for="parking">Parcheggio:</label><br>
+        <label for="parking">Parcheggio:</label>
         <input type="checkbox" name="parking" id="parking" value="1">
         <input type="submit" value="Cerca">
     </form>
