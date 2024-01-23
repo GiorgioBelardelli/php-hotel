@@ -10,8 +10,7 @@
     
     <form>
         <label for="parking">Parcheggio:</label><br>
-        <input type="checkbox" name="parkingY" id="parking" value="1">
-        <input type="checkbox" name="parkingN" id="parking" value="2">
+        <input type="checkbox" name="parking" id="parking" value="1">
         <input type="submit" value="Cerca">
     </form>
 
@@ -57,25 +56,43 @@
 
 ];
 
-$filterParking = isset($_GET['parkingY']);
+$filterParking = isset($_GET['parking']);
 
+
+echo"
+<table class='table'>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Parcheggio</th>
+            <th>Voto</th>
+            <th>Distanza dal centro</th>
+        </tr>
+    </thead>
+  <tbody>"; 
 
 foreach ($hotels as $index => $hotelinfo) {
     // Mostra solo gli hotel con parcheggio se la casella di controllo è selezionata
-    if ($filterParking && !$hotelinfo['parkingY']) {
+    if ($filterParking && !$hotelinfo['parking']) {
         continue;
     }
 
     echo "
-    <table class='table'>
-    <th scope='row'>$index: </td>
+    <tr>
+    <th scope='row'>$index: </th>
     <td>$hotelinfo[name]</td>
     <td>$hotelinfo[description]</td>
-    <td>" . ($hotelinfo['parking'] ? 'Con Parcheggio' : 'Senza Parcheggio') . "</td>
+    <td>$hotelinfo[parking]</td>
     <td>$hotelinfo[vote]</td> 
-    <td>$hotelinfo[distance_to_center]</td> 
-    </table>";
+    <td>$hotelinfo[distance_to_center]</td>
+    </tr>";
 }
+
+echo"
+</tbody>
+</table>";
 
 ?>
 
