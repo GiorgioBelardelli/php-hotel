@@ -13,6 +13,8 @@
     <form>
         <label for="parking">Parcheggio:</label>
         <input type="checkbox" name="parking" id="parking" value="1">
+        <label for="vote">Quante stelle cerchi?</label>
+        <input type="text" name="vote">
         <input type="submit" value="Cerca">
     </form>
 
@@ -59,7 +61,7 @@
 ];
 
 $filterParking = isset($_GET['parking']);
-
+$stars = $_GET['vote'];
 
 echo"
 <table class='table'>
@@ -76,10 +78,13 @@ echo"
   <tbody>"; 
 
 foreach ($hotels as $index => $hotelinfo) {
-    // Mostra solo gli hotel con parcheggio se la casella di controllo è selezionata
+
+    if($stars > $hotelinfo['vote']){
+        continue;
+    };
     if ($filterParking && !$hotelinfo['parking']) {
         continue;
-    }
+    };
 
     echo "
     <tr>
